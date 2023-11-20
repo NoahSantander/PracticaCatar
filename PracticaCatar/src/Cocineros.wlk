@@ -9,6 +9,8 @@ class Cocinero {
 	method cambiarDeEspecialidad(especialidadNueva) {
 		especialidad = especialidadNueva
 	}
+	
+	method participar(torneo) = torneo.inscribir(self, self.cocinar())
 }
 
 class Pastelero {

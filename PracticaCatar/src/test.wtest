@@ -1,0 +1,24 @@
+import Platos.*
+import Cocineros.*
+import Torneos.*
+
+describe "test de torneo" {
+	const cristof = new Cocinero(especialidad = new Souschef(cantidadDeseadaDeCalorias = 500))
+	const alfred = new Cocinero(especialidad = new Chef(cantidadDeseadaDeCalorias = 300))
+	const buddy = new Cocinero(especialidad = new Pastelero(nivelDeseadoDeDulzor = 100))
+	const pelado = new Cocinero(especialidad = new Chef(cantidadDeseadaDeCalorias = 600))
+	
+	const torneo = new Torneo(catadores = [cristof, alfred, buddy])
+	test "no hay torneo porque no hay participantes" {
+
+		assert.throwsExceptionLike(
+	   		new DomainException( message = "No se puede hacer el torneo porque no hay participantes" ), 
+	   		{ torneo.cocineroGanador() })
+	}
+	
+	test "gana pelado el torneo" {
+		pelado.participar(torneo)
+		alfred.participar(torneo)
+		assert.equals(pelado, torneo.cocineroGanador())
+	}
+}

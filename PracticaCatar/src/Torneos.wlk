@@ -2,7 +2,7 @@ import Cocineros.*
 import Platos.*
 
 class Torneo {
-	const catadores = []
+	const catadores
 	const participantes = new Dictionary()
 	
 	method inscribir(cocinero, plato) {
